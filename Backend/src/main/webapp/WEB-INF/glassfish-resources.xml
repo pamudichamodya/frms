@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN" "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+
+    <!-- Connection pool for the FRMS MySQL database -->
+    <jdbc-connection-pool
+        name="frms_pool"
+        datasource-classname="com.mysql.cj.jdbc.MysqlDataSource"
+        res-type="javax.sql.DataSource"
+        is-connection-validation-required="true"
+        connection-validation-method="auto-commit">
+        <property name="serverName" value="localhost"/>
+        <property name="portNumber" value="3306"/>
+        <property name="databaseName" value="frms_db"/>
+        <property name="user" value="root"/>
+        <property name="password" value="12345678"/>
+        <property name="useSSL" value="false"/>
+        <property name="allowPublicKeyRetrieval" value="true"/>
+        <property name="serverTimezone" value="UTC"/>
+    </jdbc-connection-pool>
+
+    <!-- JNDI resource, scoped to this application (matches java:app/jdbc/frms_db) -->
+    <jdbc-resource
+        pool-name="frms_pool"
+        jndi-name="java:app/jdbc/frms_db"/>
+
+</resources>
