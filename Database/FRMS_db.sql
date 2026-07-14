@@ -32,7 +32,12 @@ CREATE TABLE IF NOT EXISTS `alerts` (
   CONSTRAINT `fk_alerts_ingredient` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table frms_db.alerts: ~3 rows (approximately)
+INSERT INTO `alerts` (`id`, `ingredient_id`, `alert_type`, `threshold`, `triggered_at`, `resolved_at`) VALUES
+	(1, 7, 'LOW_STOCK', 3.00, '2026-08-14 16:46:15', NULL),
+	(2, 6, 'LOW_STOCK', 3.00, '2026-08-14 16:47:40', NULL),
+	(3, 8, 'LOW_STOCK', 1.00, '2026-08-16 06:09:16', NULL),
+	(4, 9, 'LOW_STOCK', 1.00, '2026-08-16 11:54:37', NULL);
 
 -- Dumping structure for table frms_db.ingredients
 CREATE TABLE IF NOT EXISTS `ingredients` (
@@ -48,7 +53,16 @@ CREATE TABLE IF NOT EXISTS `ingredients` (
   UNIQUE KEY `uq_ingredients_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table frms_db.ingredients: ~7 rows (approximately)
+INSERT INTO `ingredients` (`id`, `name`, `unit`, `unit_price`, `threshold_qty`, `category`, `created_at`, `updated_at`) VALUES
+	(6, 'Rice', 'kg', 250.00, 3.00, 'Grains', '2026-08-13 19:57:12', '2026-08-13 19:57:12'),
+	(7, 'Chicken', 'kg', 1500.00, 3.00, 'Meets', '2026-08-14 12:15:49', '2026-08-14 12:15:49'),
+	(8, 'Carrot', 'kg', 239.00, 10.00, 'Vegetables', '2026-08-16 06:07:22', '2026-08-16 17:01:43'),
+	(9, 'leeks', 'kg', 200.00, 3.00, 'Vegetables', '2026-08-16 09:11:31', '2026-08-16 17:02:11'),
+	(11, 'flour', 'kg', 250.00, 6.00, 'grains', '2026-08-16 11:50:22', '2026-08-16 17:01:53'),
+	(18, 'Coffee', 'kg', 1.00, 2.00, 'Powder', '2026-08-16 16:53:46', '2026-08-16 16:53:46'),
+	(19, 'chili powder', 'kg', 400.00, 2.00, 'spices', '2026-08-16 16:57:01', '2026-08-16 16:57:01'),
+	(20, 'Pepper', 'kg', 400.00, 2.00, 'spices', '2026-08-16 17:26:48', '2026-08-16 17:26:48');
 
 -- Dumping structure for table frms_db.product_ingredients
 CREATE TABLE IF NOT EXISTS `product_ingredients` (
@@ -61,7 +75,21 @@ CREATE TABLE IF NOT EXISTS `product_ingredients` (
   CONSTRAINT `fk_pi_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table frms_db.product_ingredients: ~13 rows (approximately)
+INSERT INTO `product_ingredients` (`product_id`, `ingredient_id`, `qty_per_unit`) VALUES
+	(3, 6, 1.000),
+	(3, 7, 1.000),
+	(6, 6, 1.000),
+	(6, 7, 0.500),
+	(6, 8, 1.000),
+	(6, 9, 0.250),
+	(18, 7, 1.000),
+	(18, 8, 1.000),
+	(18, 9, 1.000),
+	(19, 7, 1.000),
+	(19, 8, 1.000),
+	(19, 9, 0.999),
+	(19, 11, 1.000);
 
 -- Dumping structure for table frms_db.products
 CREATE TABLE IF NOT EXISTS `products` (
@@ -75,7 +103,12 @@ CREATE TABLE IF NOT EXISTS `products` (
   UNIQUE KEY `uq_products_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table frms_db.products: ~4 rows (approximately)
+INSERT INTO `products` (`id`, `name`, `selling_price`, `category`, `created_at`, `updated_at`) VALUES
+	(3, 'Chicken Rice', 850.00, 'Main Course', '2026-08-14 12:20:36', '2026-08-14 12:20:36'),
+	(6, 'Vegetable Fried rice', 950.00, 'Main Course', '2026-08-16 11:53:22', '2026-08-16 11:53:22'),
+	(18, 'Noodles', 900.00, 'Main Course', '2026-08-16 16:58:23', '2026-08-16 16:58:23'),
+	(19, 'Pizza', 1800.00, 'Main Course', '2026-08-16 17:28:16', '2026-08-16 17:28:16');
 
 -- Dumping structure for table frms_db.sales
 CREATE TABLE IF NOT EXISTS `sales` (
@@ -92,7 +125,18 @@ CREATE TABLE IF NOT EXISTS `sales` (
   CONSTRAINT `fk_sales_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table frms_db.sales: ~10 rows (approximately)
+INSERT INTO `sales` (`id`, `product_id`, `qty_sold`, `sale_price`, `timestamp`, `user_id`) VALUES
+	(1, 3, 1.00, 850.00, '2026-08-14 12:21:21', 5),
+	(2, 3, 1.00, 850.00, '2026-08-14 16:41:41', 5),
+	(3, 3, 1.00, 850.00, '2026-08-14 16:43:32', 5),
+	(4, 3, 2.00, 1700.00, '2026-08-14 16:44:33', 5),
+	(5, 3, 1.00, 850.00, '2026-08-14 16:46:16', 5),
+	(6, 3, 1.00, 850.00, '2026-08-14 16:47:29', 5),
+	(7, 3, 1.00, 850.00, '2026-08-14 16:47:40', 5),
+	(8, 3, 2.00, 1700.00, '2026-08-16 00:39:00', 5),
+	(9, 3, 3.00, 2550.00, '2026-08-16 11:32:48', 5),
+	(10, 19, 1.00, 1800.00, '2026-08-16 11:58:50', 5);
 
 -- Dumping structure for table frms_db.stock_levels
 CREATE TABLE IF NOT EXISTS `stock_levels` (
@@ -103,7 +147,13 @@ CREATE TABLE IF NOT EXISTS `stock_levels` (
   CONSTRAINT `fk_sl_ingredient` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table frms_db.stock_levels: ~5 rows (approximately)
+INSERT INTO `stock_levels` (`ingredient_id`, `current_qty`, `last_updated`) VALUES
+	(6, 4.000, '2026-08-16 11:32:48'),
+	(7, 3.950, '2026-08-16 11:59:46'),
+	(8, 8.000, '2026-08-16 11:58:50'),
+	(9, 1.651, '2026-08-16 11:58:50'),
+	(11, 9.000, '2026-08-16 11:58:50');
 
 -- Dumping structure for table frms_db.stock_movements
 CREATE TABLE IF NOT EXISTS `stock_movements` (
@@ -122,7 +172,52 @@ CREATE TABLE IF NOT EXISTS `stock_movements` (
   CONSTRAINT `fk_sm_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table frms_db.stock_movements: ~43 rows (approximately)
+INSERT INTO `stock_movements` (`id`, `ingredient_id`, `movement_type`, `qty`, `reference`, `timestamp`, `user_id`) VALUES
+	(5, 6, 'IN', 10.000, 'PO-002', '2026-08-13 19:57:29', 5),
+	(6, 7, 'IN', 3.000, 'Invoice 02', '2026-08-14 12:16:13', 5),
+	(7, 7, 'IN', 5.000, 'po-03', '2026-08-14 12:17:20', 5),
+	(8, 6, 'OUT', 1.000, 'sale:1', '2026-08-14 12:21:21', 5),
+	(9, 7, 'OUT', 1.000, 'sale:1', '2026-08-14 12:21:21', 5),
+	(11, 6, 'OUT', 1.000, 'sale:2', '2026-08-14 16:41:41', 5),
+	(12, 7, 'OUT', 1.000, 'sale:2', '2026-08-14 16:41:41', 5),
+	(14, 6, 'OUT', 1.000, 'sale:3', '2026-08-14 16:43:32', 5),
+	(15, 7, 'OUT', 1.000, 'sale:3', '2026-08-14 16:43:32', 5),
+	(17, 6, 'OUT', 2.000, 'sale:4', '2026-08-14 16:44:33', 5),
+	(18, 7, 'OUT', 2.000, 'sale:4', '2026-08-14 16:44:33', 5),
+	(20, 6, 'OUT', 1.000, 'sale:5', '2026-08-14 16:46:16', 5),
+	(21, 7, 'OUT', 1.000, 'sale:5', '2026-08-14 16:46:16', 5),
+	(23, 6, 'OUT', 1.000, 'sale:6', '2026-08-14 16:47:29', 5),
+	(24, 7, 'OUT', 1.000, 'sale:6', '2026-08-14 16:47:29', 5),
+	(26, 6, 'OUT', 1.000, 'sale:7', '2026-08-14 16:47:40', 5),
+	(27, 7, 'OUT', 1.000, 'sale:7', '2026-08-14 16:47:40', 5),
+	(29, 6, 'IN', 5.000, '00251', '2026-08-14 17:09:38', 5),
+	(30, 7, 'IN', 4.000, '4584', '2026-08-14 17:09:52', 5),
+	(31, 6, 'WASTE', 1.000, 'waste:1', '2026-08-14 12:58:12', 5),
+	(32, 6, 'WASTE', 1.000, 'waste:2', '2026-08-14 13:09:03', 5),
+	(33, 6, 'OUT', 2.000, 'sale:8', '2026-08-16 00:39:00', 5),
+	(34, 7, 'OUT', 2.000, 'sale:8', '2026-08-16 00:39:00', 5),
+	(36, 8, 'WASTE', 1.000, 'waste:3', '2026-08-16 00:39:16', 5),
+	(37, 7, 'WASTE', 1.000, 'waste:4', '2026-08-16 01:30:01', 5),
+	(38, 7, 'WASTE', 1.000, 'waste:5', '2026-08-16 04:23:07', 5),
+	(39, 11, 'IN', 3.000, '009', '2026-08-16 11:50:46', 5),
+	(40, 11, 'IN', 5.000, '008', '2026-08-16 11:50:55', 5),
+	(41, 6, 'IN', 5.000, '0010', '2026-08-16 11:51:28', 5),
+	(42, 9, 'WASTE', 0.350, 'waste:6', '2026-08-16 06:24:38', 5),
+	(43, 7, 'IN', 4.000, '0010', '2026-08-16 14:27:31', 5),
+	(44, 11, 'IN', 1.000, '0990', '2026-08-16 16:36:54', 5),
+	(45, 11, 'IN', 1.000, '013', '2026-08-16 16:37:19', 5),
+	(46, 8, 'IN', 10.000, '0901', '2026-08-16 16:40:12', 5),
+	(47, 6, 'WASTE', 1.000, 'waste:7', '2026-08-16 11:21:03', 5),
+	(48, 9, 'IN', 3.000, '009', '2026-08-16 16:55:54', 5),
+	(49, 6, 'OUT', 3.000, 'sale:9', '2026-08-16 11:32:48', 5),
+	(50, 7, 'OUT', 3.000, 'sale:9', '2026-08-16 11:32:48', 5),
+	(52, 7, 'IN', 4.000, '0010', '2026-08-16 17:25:37', 5),
+	(53, 7, 'OUT', 1.000, 'sale:10', '2026-08-16 11:58:50', 5),
+	(54, 8, 'OUT', 1.000, 'sale:10', '2026-08-16 11:58:50', 5),
+	(55, 9, 'OUT', 0.999, 'sale:10', '2026-08-16 11:58:50', 5),
+	(56, 11, 'OUT', 1.000, 'sale:10', '2026-08-16 11:58:50', 5),
+	(60, 7, 'WASTE', 0.050, 'waste:8', '2026-08-16 11:59:46', 5);
 
 -- Dumping structure for table frms_db.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -137,7 +232,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `uq_users_email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table frms_db.users: ~2 rows (approximately)
+INSERT INTO `users` (`id`, `name`, `email`, `role`, `password_hash`, `created_at`, `updated_at`) VALUES
+	(4, 'SankaUdeshika', 'sankaudeshika123@gmail.com', 'staff', 'b926e929192ee30e047ab90fc9d1e0d811a4ccc5f0411da2047abfccc8cd8f60', '2026-08-12 19:13:16', '2026-08-12 19:13:16'),
+	(5, 'Udara', 'Udara@gmail.com', 'staff', '4933088263848d45d55f8e8283f3b1362d05e921a9e6ce097d4c5b47e13c33f3', '2026-08-13 16:23:26', '2026-08-13 16:23:26');
 
 -- Dumping structure for view frms_db.v_low_stock_alerts
 -- Creating temporary table to overcome VIEW dependency errors
@@ -185,7 +283,16 @@ CREATE TABLE IF NOT EXISTS `waste_events` (
   CONSTRAINT `fk_waste_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table frms_db.waste_events: ~8 rows (approximately)
+INSERT INTO `waste_events` (`id`, `ingredient_id`, `qty_wasted`, `waste_category`, `reason`, `timestamp`, `user_id`) VALUES
+	(1, 6, 1.000, 'PREPARATION_TRIMMINGS', 'Test', '2026-08-14 12:58:12', 5),
+	(2, 6, 1.000, 'KITCHEN_SPOILAGE', 'Testing 1', '2026-08-14 13:09:03', 5),
+	(3, 8, 1.000, 'PREPARATION_TRIMMINGS', '', '2026-08-16 00:39:16', 5),
+	(4, 7, 1.000, 'KITCHEN_SPOILAGE', '', '2026-08-16 01:30:01', 5),
+	(5, 7, 1.000, 'UNSOLD_LEFTOVERS', '', '2026-08-16 04:23:07', 5),
+	(6, 9, 0.350, 'CUSTOMER_PLATE_WASTE', '', '2026-08-16 06:24:38', 5),
+	(7, 6, 1.000, 'PREPARATION_TRIMMINGS', '', '2026-08-16 11:21:03', 5),
+	(8, 7, 0.050, 'CUSTOMER_PLATE_WASTE', '', '2026-08-16 11:59:46', 5);
 
 -- Dumping structure for trigger frms_db.trg_sales_after_insert
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
