@@ -3,7 +3,10 @@ import logo from "../assets/frms-logo.png";
 
 const NAV_ITEMS = [
   { to: "/dashboard", label: "Dashboard", icon: "🏠" },
-
+  { to: "/stock", label: "Stock", icon: "📦" },
+  { to: "/products", label: "Products", icon: "🍱" },
+  { to: "/selling", label: "Selling", icon: "💰" },
+  { to: "/waste", label: "Waste", icon: "🗑️" },
 ];
 
 function Layout({ user, onLogout }) {
@@ -19,7 +22,21 @@ function Layout({ user, onLogout }) {
           </div>
         </div>
 
-      
+        <nav className="sidebar-nav">
+          {NAV_ITEMS.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")}
+            >
+              <span className="sidebar-link-icon" aria-hidden="true">
+                {item.icon}
+              </span>
+              <span className="sidebar-link-label">{item.label}</span>
+            </NavLink>
+          ))}
+        </nav>
+
         <div className="sidebar-footer">
           <div className="sidebar-user">
             <span className="sidebar-user-name">{user.name}</span>
