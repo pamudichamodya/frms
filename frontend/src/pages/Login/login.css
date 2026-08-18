@@ -165,11 +165,31 @@
   margin: 0 0 4px;
 }
 
+.login-success {
+  background-color: #f0fdf4;
+  color: var(--frms-green-dark);
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  margin: 0 0 4px;
+}
+
 .login-hint {
   margin-top: 18px;
   font-size: 11px;
   color: var(--frms-gray);
   text-align: center;
+}
+
+.login-link {
+  color: var(--frms-green);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
 }
 
 /* ---------- App shell: sidebar + main content ---------- */

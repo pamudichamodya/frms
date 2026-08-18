@@ -1,0 +1,259 @@
+/* Food Selling Management */
+
+.selling-page {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.selling-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.selling-header h2 {
+  margin: 0;
+}
+
+.selling-subtitle {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.selling-primary-button,
+.selling-secondary-button {
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.selling-primary-button {
+  background: linear-gradient(135deg, var(--frms-green), var(--frms-teal));
+  color: #fff;
+  padding: 11px 16px;
+}
+
+.selling-primary-button:hover {
+  filter: brightness(1.06);
+}
+
+.selling-primary-button:disabled,
+.selling-secondary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.selling-secondary-button {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 11px 16px;
+}
+
+.selling-secondary-button:hover {
+  background: #e5e7eb;
+}
+
+.selling-message {
+  border-radius: 9px;
+  padding: 11px 14px;
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+
+.selling-message-error {
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.selling-message-success {
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.selling-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.selling-summary-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.selling-summary-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.selling-summary-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--frms-green-dark);
+}
+
+.selling-table-section {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.selling-empty-state {
+  padding: 48px 24px;
+  text-align: center;
+  color: #6b7280;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.selling-empty-state strong {
+  color: #374151;
+  font-size: 15px;
+}
+
+.selling-table-wrapper {
+  overflow-x: auto;
+}
+
+.selling-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.selling-table th {
+  text-align: left;
+  padding: 12px 16px;
+  background: #f9fafb;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.selling-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #1f2937;
+}
+
+.selling-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.selling-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Modal */
+
+.selling-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 50;
+}
+
+.selling-modal {
+  background: #fff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 440px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.selling-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.selling-modal-header h3 {
+  margin: 0 0 4px;
+}
+
+.selling-modal-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.selling-modal-close {
+  border: 0;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  color: #9ca3af;
+  padding: 0 4px;
+}
+
+.selling-modal-close:hover {
+  color: #374151;
+}
+
+.selling-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.selling-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.selling-form input,
+.selling-form select {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: inherit;
+  color: #111827;
+}
+
+.selling-form input:focus,
+.selling-form select:focus {
+  outline: none;
+  border-color: var(--frms-green);
+  box-shadow: 0 0 0 3px rgba(31, 111, 74, 0.12);
+}
+
+.selling-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
