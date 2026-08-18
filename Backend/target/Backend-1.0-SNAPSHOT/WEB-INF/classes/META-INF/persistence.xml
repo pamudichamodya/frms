@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+             
+    <persistence-unit name="FRMS_PU" transaction-type="JTA">
+        <!-- Your existing data source -->
+        <jta-data-source>java:app/jdbc/frms_db</jta-data-source> 
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        
+        <properties>
+            <!-- Your existing properties (if any) -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+            
+            <!-- THE FIX: Disable the Shared L2 Cache so DB Triggers sync immediately -->
+            <property name="eclipselink.cache.shared.default" value="false"/>
+        </properties>
+        
+    </persistence-unit>
+</persistence>
