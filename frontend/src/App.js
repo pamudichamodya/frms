@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import Layout from "./components/Layout";
 import Stock from "./pages/Stock/Stock";
 import Selling from "./pages/Selling/Selling";
@@ -24,6 +25,14 @@ function App() {
           path="/"
           element={
             user ? <Navigate to="/dashboard" replace /> : <Login onLogin={handleLogin} />
+          }
+        />
+
+        {/* Registration page. If already logged in, skip straight to the dashboard. */}
+        <Route
+          path="/register"
+          element={
+            user ? <Navigate to="/dashboard" replace /> : <Register />
           }
         />
 

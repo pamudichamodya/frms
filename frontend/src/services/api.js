@@ -18,6 +18,10 @@ const API = axios.create({
 // ---------------------------------------------------------
 export const loginApi = (credentials) => API.post("/auth/login", credentials);
 
+// Backend's UserRegisterDto only accepts { name, email, password }; role is
+// always defaulted to "staff" server-side (see AuthService.registerUser).
+export const registerApi = (data) => API.post("/auth/register", data);
+
 // Backend resource is @Path("/stock") (IngredientResource.java), not /ingredients
 export const getStockApi = () => API.get("/stock");
 export const createIngredientApi = (data) => API.post("/stock", data);
